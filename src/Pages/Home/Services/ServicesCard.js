@@ -13,9 +13,9 @@ const ServicesCard = ({service}) => {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
-          <p className="text-2xl text-orange-600">{price}</p>
+          <p className="text-2xl text-orange-600 semi-bold">$ {price}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary bg-orange-600">  </button>
+            <button className="btn btn-primary bg-orange-600 text-white">Get more info</button>
           </div>
         </div>
       </div>
