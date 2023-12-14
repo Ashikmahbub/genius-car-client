@@ -78,7 +78,7 @@ const Checkout = () => {
           />
         </div>
         <textarea className="textarea textarea-bordered h-24 w-full" name="message" placeholder="Customer Comment"></textarea>
-        <input className="btn-active btn-neutral input-bordered p-3 m-5" type="submit" value="Place Your Order" />
+        <input className="btn btn-warning input-bordered p-3 m-5" type="submit" value="Place Your Order" />
       </form>
     </div>
   );

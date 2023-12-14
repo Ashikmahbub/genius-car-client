@@ -1,10 +1,14 @@
-import React, { createContext, useContext } from "react";
+import React, {  useContext } from "react";
 import img from '../../assets/images/login/login.svg';
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
   const {loginUser} =useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+
+  const navigate = useNavigate();
     const handleLogin = event => {
         event.preventDefault();
        
@@ -15,6 +19,24 @@ const Login = () => {
         .then(result =>{
           const user = result.user;
           console.log(user);
+          const currentUser = {
+            email:user.email
+          }
+          fetch(`http://localhost:5000/jwt`,{
+            method :'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body:JSON.stringify(currentUser)
+          })
+          .then(res =>res.json())
+          .then(data =>{
+              console.log(data);
+              localStorage.setItem('geniusToken',data.token);
+              navigate(from,{replace:true});
+          })
+          
+          
         })
         .catch(err =>console.error(err));
     }
@@ -59,7 +81,7 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <input className="btn btn-secondary" type="submit"  value="Login" />
+                <input className="btn btn-warning" type="submit"  value="Login" />
                  
               </div>
             </form>
