@@ -2,6 +2,7 @@ import React, {  useContext } from "react";
 import img from '../../assets/images/login/login.svg';
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import SocialLogin from "../../Shared/SocialLogin";
 
 const Login = () => {
   const {loginUser} =useContext(AuthContext);
@@ -22,7 +23,7 @@ const Login = () => {
           const currentUser = {
             email:user.email
           }
-          fetch(`http://localhost:5000/jwt`,{
+          fetch(`https://genius-car-client-qooo.vercel.app/jwt`,{
             method :'POST',
             headers: {
               'content-type': 'application/json'
@@ -86,6 +87,7 @@ const Login = () => {
               </div>
             </form>
             <p className="text-center">New to Genius Car account <Link className="text-orange-600 font-bold" to="/signup">Sign Up</Link></p>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

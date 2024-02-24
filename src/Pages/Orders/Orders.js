@@ -13,10 +13,11 @@ const Orders = () => {
   const handleDelete =id =>{
     const proceed  =window.confirm('Are you sure want to cancel this order ')
     if (proceed){
-      fetch(`http://localhost:5000/orders/${id}`,{
+      fetch(`https://genius-car-client-qooo.vercel.app/orders/${id}`,{
         method: 'DELETE'
       })
       .then(res =>res.json())
+      
       .then(data=>{
         console.log(data)
         if(data.deletedCount >0){
@@ -28,7 +29,7 @@ const Orders = () => {
     }
   }
   const handleUpdate = id =>{
-    fetch(`http://localhost:5000/order/${id}`,{
+    fetch(`https://genius-car-client-qooo.vercel.app/order/${id}`,{
       method:'PATCH',
       headers:{
         'content-type':'application/json',
@@ -56,13 +57,14 @@ const Orders = () => {
   useEffect(() => {
     if (user) {
       console.log(user);
-      fetch(`http://localhost:5000/orders?email=${user.email}`,{
+      fetch(`https://genius-car-client-qooo.vercel.app/orders?email=${user.email}`,{
         headers:{
           authorization : `Bearer: ${localStorage.getItem(
           'geniusToken'
           )}`
         }
       })
+      
         .then(response => {
           if (response.status === 401 || response.status === 403){
             return logOut();

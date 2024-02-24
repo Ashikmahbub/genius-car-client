@@ -24,7 +24,7 @@ const Checkout = () => {
     // if(phone.length >10){
     //     alert('Phone number should be 10 characters')
     // }
-    fetch('http://localhost:5000/orders',{
+    fetch('https://genius-car-client-qooo.vercel.app/orders',{
         method:'POST',
         headers:{
             'content-type':'application/json'
