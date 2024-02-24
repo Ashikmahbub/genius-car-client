@@ -7,6 +7,7 @@ const Services = () => {
     fetch("https://genius-car-client-qooo.vercel.app/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
+       
   });
   return (
     <div>
